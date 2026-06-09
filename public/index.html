@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo de Cookies</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        line-height: 1.6;
+        margin: 0;
+        padding: 20px;
+        background: #f5f5f5;
+      }
+      .container {
+        max-width: 700px;
+        margin: 0 auto;
+        padding: 20px;
+        background: #fff;
+        border-radius: 8px;
+        box-shadow: 0 0 12px rgba(0, 0, 0, 0.08);
+      }
+      h1 {
+        margin-top: 0;
+      }
+      label {
+        display: block;
+        margin: 12px 0 4px;
+      }
+      input {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 8px;
+        border: 1px solid #ccc;
+        border-radius: 4px;
+      }
+      button,
+      a.button {
+        display: inline-block;
+        padding: 10px 16px;
+        background: #007acc;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        text-decoration: none;
+        cursor: pointer;
+      }
+      button:hover,
+      a.button:hover {
+        background: #005f99;
+      }
+      pre {
+        background: #f0f0f0;
+        padding: 12px;
+        border-radius: 4px;
+        overflow-x: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Exemplo de Cookies</h1>
+      <p>Use o formulário abaixo para criar um cookie e ver os cookies atuais do navegador.</p>
+
+      <form action="/set-cookie" method="post">
+        <label for="name">Nome do cookie</label>
+        <input id="name" name="name" type="text" value="usuario" required />
+
+        <label for="value">Valor do cookie</label>
+        <input id="value" name="value" type="text" value="valor-do-cookie" required />
+
+        <label for="days">Tempo de expiração (dias)</label>
+        <input id="days" name="days" type="number" value="1" min="1" />
+
+        <button type="submit">Salvar cookie</button>
+      </form>
+
+      <p>
+        <a class="button" href="/clear-cookie">Apagar todos os cookies</a>
+      </p>
+
+      <h2>Cookies atuais</h2>
+      <pre id="cookie-list">Carregando...</pre>
+    </div>
+
+    <script>
+      async function loadCookies() {
+        const response = await fetch('/read-cookie');
+        const data = await response.json();
+        const content = Object.keys(data).length
+          ? JSON.stringify(data, null, 2)
+          : 'Nenhum cookie definido.';
+        document.getElementById('cookie-list').textContent = content;
+      }
+
+      loadCookies();
+    </script>
+  </body>
+</html>
