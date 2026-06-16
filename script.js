@@ -52,10 +52,7 @@ function criarCookie(nome, valor, dias) {
      do formulário para melhorar a experiência do usuário.
     */
     document.cookie = `${nome}=${encodeURIComponent(valor)}${dataExpiracao}; path=/`;
-<<<<<<< HEAD
     //no codigo acima, foi criado um cookie com o nome e valor fornecidos.
-=======
->>>>>>> e5960649de507a250cdd8f2dbb2e3d66fcf5ae44
     console.log(`✓ Cookie criado: ${nome} = ${valor}`);
     alert(`Cookie '${nome}' criado com sucesso!`);
     listarCookies();
@@ -78,10 +75,7 @@ function lerCookie(nome) {
     */
     const nomeCodificado = `${nome}=`;
     const cookies = document.cookie.split(';');
-<<<<<<< HEAD
     // o código acima divide a string de cookies em um array, onde cada elemento é um cookie individual.
-=======
->>>>>>> e5960649de507a250cdd8f2dbb2e3d66fcf5ae44
     for (let i = 0; i < cookies.length; i++) {
         let cookie = cookies[i].trim();
         if (cookie.indexOf(nomeCodificado) === 0) {
@@ -175,10 +169,7 @@ function listarCookies() {
     */
     const cookies = obterTodosCookies();
     const cookieList = document.getElementById('cookieList');
-<<<<<<< HEAD
     // o código acima pega o elemento HTML onde os cookies serão listados e armazena em uma variável para manipulação posterior.
-=======
->>>>>>> e5960649de507a250cdd8f2dbb2e3d66fcf5ae44
     if (Object.keys(cookies).length === 0) {
         cookieList.innerHTML = '<p class="empty-message">Nenhum cookie encontrado. Crie um novo!</p>';
         return;
