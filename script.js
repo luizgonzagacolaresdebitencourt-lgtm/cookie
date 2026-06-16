@@ -30,7 +30,7 @@ function criarCookie(nome, valor, dias) {
     }
 
     document.cookie = `${nome}=${encodeURIComponent(valor)}${dataExpiracao}; path=/`;
-    
+    //no codigo acima, foi criado um cookie com o nome e valor fornecidos.
     console.log(`✓ Cookie criado: ${nome} = ${valor}`);
     alert(`Cookie '${nome}' criado com sucesso!`);
     
@@ -50,7 +50,7 @@ function criarCookie(nome, valor, dias) {
 function lerCookie(nome) {
     const nomeCodificado = `${nome}=`;
     const cookies = document.cookie.split(';');
-    
+    // o código acima divide a string de cookies em um array, onde cada elemento é um cookie individual.
     for (let i = 0; i < cookies.length; i++) {
         let cookie = cookies[i].trim();
         if (cookie.indexOf(nomeCodificado) === 0) {
@@ -133,7 +133,7 @@ function limparTodosCookies() {
 function listarCookies() {
     const cookies = obterTodosCookies();
     const cookieList = document.getElementById('cookieList');
-    
+    // o código acima pega o elemento HTML onde os cookies serão listados e armazena em uma variável para manipulação posterior.
     if (Object.keys(cookies).length === 0) {
         cookieList.innerHTML = '<p class="empty-message">Nenhum cookie encontrado. Crie um novo!</p>';
         return;
